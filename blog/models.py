@@ -15,8 +15,8 @@ class Post(models.Model):
     # Slug is like a label, identifies part of a web address, end of URL.
     slug = models.SlugField(max_length=200, unique=True)
     # The author of the post created, this being the user.
-    author = models.ForiegnKey(
-        User, on_delete=models.CASCADE, related_name='blog_posts'
+    author = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="blog_posts"
         )
     # Updates date to time/date when post is updated.
     updates_on = models.DateTimeField(auto_now=True)
@@ -31,7 +31,9 @@ class Post(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     # ManytoManyField refers to multiple instances from a model.
-    likes = models.ManytoManyField(User, related_name='blog_likes', blank=True)
+    likes = models.ManyToManyField(
+        User, related_name='blogpost_like', blank=True
+    )
 
     class Meta:
         ordering = ['-created_on']
@@ -45,7 +47,7 @@ class Post(models.Model):
 
 # Model for comments.
 class comment(models.Model):
-    post = models.ForiegnKey(
+    post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name='comments'
         )
     name = models.CharField(max_length=80)
