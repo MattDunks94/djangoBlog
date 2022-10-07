@@ -28,7 +28,8 @@
                                     <p class="author">Author: {{ post.author }}</p>
                                 </div>
                             </div>
-                            <a href="#" class="post-link">
+                            <!-- Injecting the url path via slug value -->
+                            <a href="{% url 'post_detail' post.slug %}" class="post-link">
                                 <!-- Title of post, from Model Post -->
                                 <h2 class="card-title">{{ post.title }}</h2>
                                 <!-- Excerpt from Model Post -->
