@@ -50,10 +50,15 @@ class Comment(models.Model):
     post = models.ForeignKey(
         Post, on_delete=models.CASCADE, related_name='comments'
         )
+    # Name field.
     name = models.CharField(max_length=80)
+    # Email field.
     email = models.EmailField()
+    # Body field, contains main comment content.
     body = models.TextField()
+    # Date created on.
     created_on = models.DateTimeField(auto_now_add=True)
+    # Approved checkbox, default as False(empty).
     approved = models.BooleanField(default=False)
 
     class Meta:
