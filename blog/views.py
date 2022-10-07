@@ -26,7 +26,19 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         # Collects published post with correct slug.
         post = get_object_or_404(queryset, slug=slug)
+        # Filters approved comments only, in ascending order.
+        # This displays conversations, with oldest comment first.
         comments = post.comments.filter(approved=True).order_by('created_on')
         liked = False
+        # Checks whether logged in user has liked a post.
         if post.likes.filter(id=self.request.user.id).exists():
-            
+            liked = True
+        # Renders post details to post_detail.html file.
+        return render(
+            request, "post_detail.html",
+            {
+                "post": post,
+                "comments": comments,
+                "liked": liked
+            },
+        )
