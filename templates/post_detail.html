@@ -82,10 +82,12 @@
         <div class="col-md-4 card mb-4  mt-3 ">
             <div class="card-body">
                 <!-- For later -->
+                <!-- Checks if "commented" is True, if so waits for approval -->
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
                     Your comment is awaiting approval
                 </div>
+                <!-- If "commented" is False, returns empty form -->
                 {% else %}
                 <!-- Checks if user is authorised, signed in to profile -->
                 {% if user.is_authenticated %}
