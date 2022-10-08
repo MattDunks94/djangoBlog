@@ -8,4 +8,5 @@ urlpatterns = [
     # <slug:slug>/ captures URL value, in this case the slug value.
     # First slug is the path convertor, second is a keyword.
     path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
+    path('like/<slug:slug>', views.PostLike.as_view(), name='post_like')
 ]
