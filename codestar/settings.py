@@ -57,6 +57,8 @@ SITE_ID = 1
 # Login/logout redirect path, back to homepage.
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+# Giving django-crispy-forms library access to bootstrap css framework.
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
