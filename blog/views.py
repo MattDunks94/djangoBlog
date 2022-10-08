@@ -1,7 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from .models import Post
 from .forms import CommentForm
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
@@ -85,3 +86,23 @@ class PostDetail(View):
                 "comment_form": CommentForm()
             },
         )
+
+
+class PostLike(View):
+
+    def post(self, request, slug):
+        # Gathers the post.
+        post = get_object_or_404(Post, slug=slug)
+        # Filtering post likes through user id.
+        # If user.id exists, then the post has already been liked by user.
+        # user.id will be removed from that post.
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+        # Else, a like will be added, adding the user.
+        else:
+            post.likes.add(request.user)
+        # Redirects to post_detail.html.
+        # reverse allows us to look up URL by name.(imported from django.http)
+        return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
