@@ -33,10 +33,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+ALLOWED_HOSTS = ['codestar-mjd.herokuapp.com', 'localhost']
+
 # This enables summernote editor during deployment.
 X_FRAME_OPTIONS = 'SAMEORIGIN'
-
-ALLOWED_HOSTS = ['codestar-mjd.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -58,8 +58,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'blog',
 ]
-
-ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 SITE_ID = 1
 # Login/logout redirect path, back to homepage.
