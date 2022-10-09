@@ -72,6 +72,7 @@ class PostDetail(View):
             # Saving the comment form in the DB. 
             comment.save()
             # Successful message displays when form is complete.
+            # Check django messages docs for other message alert types.
             messages.success(request, 'Comment made successfully!')
         # If form is invalid, returns empty form.        
         else:
