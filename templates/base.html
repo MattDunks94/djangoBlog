@@ -56,6 +56,22 @@
             </div>
         </div>
     </nav>
+    <!-- Alert Messages -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <!-- For loop, looping through what message is needed -->
+                {% for message in messages %}
+                <div class="alert {{ messages.tags }} alert-dismissible fade show" id="msg" role="alert">
+                    <!-- Safe filter, makes sure the html, or script, is rendered safely before viewing -->
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close">
+                    </button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 
     <main class="flex-shrink-0 main-bg">
         {% block content %}
@@ -71,6 +87,17 @@
             <i class="fab fa-instagram-square ms-3"></i>
             <i class="fab fa-youtube-square ms-3"></i></p>
     </footer>
+    <!-- Message time out function, lasts for 3 secs -->
+    <script>
+        setTimeout(function() {
+            // Getting the element via id.
+            let messages = document.getElementById("msg");
+            let alert = new bootstrap.Alert(messages);
+            // Dismiss the alert automatically.
+            alert.close();
+            // 3 second timer.
+        }, 3000);
+    </script>
 </body>
 
 </html>
