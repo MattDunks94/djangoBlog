@@ -13,6 +13,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+# Importing messages from django, built in function.
+# Pop up messsages for user when an action is made.
+from django.contrib.messages import constants as messages
 if os.path.isfile('env.py'):
     import env
 
@@ -59,6 +62,16 @@ SITE_ID = 1
 # Login/logout redirect path, back to homepage.
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
+
+# Assigning types of messages to classes from bootstrap.
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+}
+
 # Giving django-crispy-forms library access to bootstrap css framework.
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
