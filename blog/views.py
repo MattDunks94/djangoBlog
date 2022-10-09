@@ -3,6 +3,7 @@ from django.views import generic, View
 from .models import Post
 from .forms import CommentForm
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 
 # Create your views here.
 
@@ -70,7 +71,9 @@ class PostDetail(View):
             comment.post = post
             # Saving the comment form in the DB. 
             comment.save()
-        # If form is invalid, returns empty form. 
+            # Successful message displays when form is complete.
+            messages.success(request, 'Comment made successfully!')
+        # If form is invalid, returns empty form.        
         else:
             comment_form = CommentForm()
 
