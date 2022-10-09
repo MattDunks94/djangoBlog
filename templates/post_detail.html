@@ -58,7 +58,7 @@
                         </strong>
                     </div>
                     <div class="col-1">
-                        <!-- Displayes number of comments -->
+                        <!-- Displays number of comments -->
                         {% with comments.count as total_comments %}
                         <strong class="text-secondary"><i class="far fa-comments"></i>
                             <!-- Our total_comments variable goes before the closing strong tag -->
@@ -104,7 +104,6 @@
                 {% if commented %}
                 <div class="alert alert-success" role="alert">
                     Your comment is awaiting approval
-                </div>
                 <!-- If "commented" is False, returns empty form -->
                 {% else %}
                 <!-- Checks if user is authorised, signed in to profile -->
@@ -123,6 +122,7 @@
                 </form>
                 {% endif %}
                 {% endif %}
+
             </div>
         </div>
     </div>
